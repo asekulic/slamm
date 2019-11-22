@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} {{ ucfirst(config('multiauth.prefix')) }}</title>
+    <title> {{ config('app.name', 'Laravel') }} </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('admin.home') }}">
-                    {{ config('app.name', 'Laravel') }} {{ ucfirst(config('multiauth.prefix')) }}
+                    {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -45,7 +45,7 @@
                         <!-- Authentication Links -->
                         @guest('admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.login')}}">{{ ucfirst(config('multiauth.prefix')) }} Login</a>
+                            <a class="nav-link" href="{{route('admin.login')}}"> Prijava </a>
                         </li>
                         @else
                         <li class="nav-item dropdown">
@@ -56,13 +56,15 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @admin('super')
-                                    <a class="dropdown-item" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>
-                                    <a class="dropdown-item" href="{{ route('admin.roles') }}">Roles</a>
+                                    {{-- <a class="dropdown-item" href="{{ route('admin.show') }}">{{ ucfirst(config('multiauth.prefix')) }}</a>  --}}
+                                    <a class="dropdown-item" href="{{ route('admin.show') }}">Dodaj korisnika </a>
+                                    {{-- <a class="dropdown-item" href="{{ route('admin.roles') }}">Roles</a>      ISKLJUCENA OPCIJA ZA DODAVANJE ROLA --}}
                                 @endadmin
-                                    <a class="dropdown-item" href="{{ route('admin.password.change') }}">Change Password</a>
-                                <a class="dropdown-item" href="/admin/logout" onclick="event.preventDefault();
+                                    <a class="dropdown-item" href="{{ route('admin.home') }}">Pocetna</a>
+                                    <a class="dropdown-item" href="{{ route('admin.password.change') }}">Promena lozinke</a>
+                                    <a class="dropdown-item" href="/admin/logout" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Odjava') }}
                                     </a>
                                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                     @csrf

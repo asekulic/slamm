@@ -39,3 +39,12 @@
     Route::fallback(function () {
         return abort(404);
     });
+
+
+    Route::get('nastavnik', function(){
+        return 'nastavnik only';
+    })->middleware('role:nastavnik');
+
+    Route::get('student', function(){
+        return 'student only';
+    })->middleware('role:student');

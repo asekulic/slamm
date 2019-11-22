@@ -11,6 +11,13 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('vendor.multiauth.admin.login');
 });
+
+// Route::resource('student', 'StudentPages');

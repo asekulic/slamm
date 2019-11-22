@@ -5,9 +5,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{ ucfirst(config('multiauth.prefix')) }} List
+                    Lista korisnika
                     <span class="float-right">
-                        <a href="{{route('admin.register')}}" class="btn btn-sm btn-success">New {{ ucfirst(config('multiauth.prefix')) }}</a>
+                        <a href="{{route('admin.register')}}" class="btn btn-sm btn-success"> Novi korisnik </a>
                     </span>
                 </div>
                 <div class="card-body">
@@ -22,14 +22,14 @@
                                             {{ $role->name }}
                                         </span> @endforeach
                             </span>
-                            {{ $admin->active? 'Active' : 'Inactive' }}
+                            {{ $admin->active? 'Aktivan' : 'Neaktivan' }}
                             <div class="float-right">
-                                <a href="#" class="btn btn-sm btn-secondary mr-3" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();">Delete</a>
+                                <a href="#" class="btn btn-sm btn-secondary mr-3" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();">Izbrisi</a>
                                 <form id="delete-form-{{ $admin->id }}" action="{{ route('admin.delete',[$admin->id]) }}" method="POST" style="display: none;">
                                     @csrf @method('delete')
                                 </form>
 
-                                <a href="{{route('admin.edit',[$admin->id])}}" class="btn btn-sm btn-primary mr-3">Edit</a>
+                                <a href="{{route('admin.edit',[$admin->id])}}" class="btn btn-sm btn-primary mr-3">Izmeni</a>
                             </div>
                         </li>
                         @endforeach @if($admins->count()==0)
